@@ -36,3 +36,100 @@ describe("#wordSearch()", function() {
     assert.isTrue(result);
   });
 });
+describe("#wordSearch vertical implementation tests", function() {
+  it("should return true if word is vertically positioned", function() {
+    const result = wordSearch([
+      ['S', 'W', 'C', 'F', 'Q', 'U', 'A', 'L'],
+      ['E', 'E', 'I', 'N', 'F', 'E', 'L', 'D'],
+      ['I', 'F', 'C', 'F', 'Q', 'U', 'A', 'L'],
+      ['N', 'M', 'J', 'T', 'E', 'V', 'R', 'G'],
+      ['F', 'H', 'C', 'S', 'Y', 'E', 'R', 'L'],
+      ['E', 'F', 'R', 'E', 'N', 'E', 'Y', 'B'],
+      ['L', 'B', 'T', 'W', 'A', 'P', 'A', 'I'],
+      ['D', 'D', 'C', 'A', 'K', 'U', 'A', 'S'],
+      ['S', 'Z', 'K', 'F', 'Q', 'U', 'A', 'L'],
+    ], 'SEINFELDS')
+
+    assert.isTrue(result);
+  });
+  it("should return false if word is missing on vertical", function() {
+    const result = wordSearch([
+      ['S', 'W', 'C', 'F', 'Q', 'U', 'A', 'L'],
+      ['E', 'E', 'I', 'N', 'F', 'E', 'L', 'D'],
+      ['I', 'F', 'C', 'F', 'Q', 'U', 'A', 'L'],
+      ['N', 'M', 'J', 'T', 'E', 'V', 'R', 'G'],
+      ['F', 'H', 'C', 'S', 'Y', 'E', 'R', 'L'],
+      ['E', 'F', 'R', 'E', 'N', 'E', 'Y', 'B'],
+      ['L', 'B', 'T', 'W', 'A', 'P', 'A', 'I'],
+      ['D', 'D', 'C', 'A', 'K', 'U', 'A', 'S'],
+      ['S', 'Z', 'K', 'F', 'Q', 'U', 'A', 'L'],
+    ], 'AGURALIS')
+
+    assert.isFalse(result);
+  });
+});
+
+describe("#wordSearch small string tests", function() {
+  it("should return true if small word is vertically positioned", function() {
+    const result = wordSearch([
+      ['S', 'W', 'C', 'F', 'Q', 'U', 'A', 'L'],
+      ['E', 'E', 'I', 'N', 'F', 'E', 'L', 'D'],
+      ['I', 'F', 'C', 'F', 'Q', 'U', 'A', 'L'],
+      ['N', 'M', 'J', 'T', 'E', 'V', 'R', 'G'],
+      ['F', 'H', 'C', 'S', 'Y', 'E', 'R', 'L'],
+      ['D', 'F', 'R', 'E', 'N', 'E', 'Y', 'B'],
+      ['A', 'B', 'T', 'W', 'A', 'P', 'A', 'I'],
+      ['D', 'D', 'C', 'A', 'K', 'U', 'A', 'S'],
+      ['S', 'Z', 'K', 'F', 'Q', 'U', 'A', 'L'],
+    ], 'SEIN')
+
+    assert.isTrue(result);
+  });
+  it("should return true if small word present on horizontal", function() {
+    const result = wordSearch([
+      ['S', 'E', 'I', 'N', 'Q', 'U', 'A', 'L'],
+      ['E', 'E', 'I', 'N', 'F', 'E', 'L', 'D'],
+      ['F', 'F', 'C', 'F', 'Q', 'U', 'A', 'L'],
+      ['N', 'M', 'J', 'T', 'E', 'V', 'R', 'G'],
+      ['F', 'H', 'C', 'S', 'Y', 'E', 'R', 'L'],
+      ['E', 'F', 'R', 'E', 'N', 'E', 'Y', 'B'],
+      ['L', 'B', 'T', 'W', 'A', 'P', 'A', 'I'],
+      ['D', 'D', 'C', 'A', 'K', 'U', 'A', 'S'],
+      ['S', 'Z', 'K', 'F', 'Q', 'U', 'A', 'L'],
+    ], 'SEIN')
+
+    assert.isTrue(result);
+  });
+});
+describe("#wordSearch for invalid search strings", function() {
+  it("should 'Invalid search word' if passed invalid search argument", function() {
+    const result = wordSearch([
+      ['S', 'W', 'C', 'F', 'Q', 'U', 'A', 'L'],
+      ['E', 'E', 'I', 'N', 'F', 'E', 'L', 'D'],
+      ['I', 'F', 'C', 'F', 'Q', 'U', 'A', 'L'],
+      ['N', 'M', 'J', 'T', 'E', 'V', 'R', 'G'],
+      ['F', 'H', 'C', 'S', 'Y', 'E', 'R', 'L'],
+      ['D', 'F', 'R', 'E', 'N', 'E', 'Y', 'B'],
+      ['A', 'B', 'T', 'W', 'A', 'P', 'A', 'I'],
+      ['D', 'D', 'C', 'A', 'K', 'U', 'A', 'S'],
+      ['S', 'Z', 'K', 'F', 'Q', 'U', 'A', 'L'],
+    ], '')
+
+    assert.isFalse(result);
+  });
+  it("should return true if small word present on horizontal", function() {
+    const result = wordSearch([
+      ['S', 'E', 'I', 'N', 'Q', 'U', 'A', 'L'],
+      ['E', 'E', 'I', 'N', 'F', 'E', 'L', 'D'],
+      ['F', 'F', 'C', 'F', 'Q', 'U', 'A', 'L'],
+      ['N', 'M', 'J', 'T', 'E', 'V', 'R', 'G'],
+      ['F', 'H', 'C', 'S', 'Y', 'E', 'R', 'L'],
+      ['E', 'F', 'R', 'E', 'N', 'E', 'Y', 'B'],
+      ['L', 'B', 'T', 'W', 'A', 'P', 'A', 'I'],
+      ['D', 'D', 'C', 'A', 'K', 'U', 'A', 'S'],
+      ['S', 'Z', 'K', 'F', 'Q', 'U', 'A', 'L'],
+    ], )
+    
+    assert.isFalse(result);
+  });
+});
